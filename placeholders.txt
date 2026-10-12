@@ -1,0 +1,113 @@
+BILDCO SITE — VALUES TO FILL
+============================
+Fill the value after each "=" sign. Leave blank if you don't have it yet.
+Blank values are handled safely: the related button/section is hidden or
+falls back to email (contact@bildco.in). Nothing fake is shown on the site.
+
+Phone numbers: include country code, digits only, e.g. 919876543210
+
+
+1. CONTACT
+----------
+DEMO_CALL_NUMBER =
+  (Number customers call to talk to the demo voice agent. Used by
+   "Talk to our AI now" and "Call our demo agent".)
+
+WHATSAPP_NUMBER =
+  (WhatsApp number for the demo chat agent / sales. Used by the WhatsApp
+   buttons, sticky mobile WhatsApp button and footer.)
+
+WHATSAPP_PREFILL_MESSAGE = Hi Bildco, I'd like to try your AI agent.
+  (Text pre-typed when someone opens WhatsApp. Edit if you want.)
+
+CONSULTATION_BOOKING_URL =
+  (Calendly / Cal.com / Google Calendar booking link for
+   "Book a free consultation". Blank = opens email.)
+
+CONTACT_EMAIL = contact@bildco.in
+
+
+2. PRICING
+----------
+STARTING_PRICE_INR_PER_MONTH =
+  (Number only, e.g. 4999. Blank = pricing section shows
+   "custom quote" without a rupee figure.)
+
+
+3. FOUNDING CLIENTS OFFER
+-------------------------
+FOUNDING_SPOTS_TOTAL = 20
+FOUNDING_SPOTS_REMAINING =
+  (Optional. Real number of spots left. Blank = not shown.)
+
+
+4. LOCATION
+-----------
+CITY = Hyderabad
+FULL_ADDRESS =
+  (Optional. Blank = footer shows just "Hyderabad, India".)
+
+
+5. LANGUAGE AUDIO SAMPLES
+-------------------------
+Drop audio files (mp3) into: public/audio/
+Use these exact file names, or write your own file names below:
+
+AUDIO_TELUGU   = telugu.mp3
+AUDIO_HINDI    = hindi.mp3
+AUDIO_ENGLISH  = english.mp3
+AUDIO_HINGLISH = hinglish.mp3
+
+  (Until a file exists, that language shows its written sample
+   conversation only, with no play button.)
+
+
+6. WEBSITE CHAT WIDGET
+----------------------
+CHAT_WIDGET_PROVIDER =
+  (e.g. your own bot, Botpress, Voiceflow, Tidio, Crisp...)
+CHAT_WIDGET_EMBED_CODE =
+  (Paste the <script> snippet or iframe URL they give you.
+   Blank = demo block shows call + WhatsApp only.)
+
+
+7. INDUSTRY STATISTICS (optional)
+---------------------------------
+The site currently uses NO industry statistics. If you want any, add them
+here with a real source URL for each. Each will be labeled "Industry data".
+
+STAT_1_TEXT =
+STAT_1_SOURCE_URL =
+STAT_2_TEXT =
+STAT_2_SOURCE_URL =
+
+
+8. SOCIAL / LEGAL (optional)
+----------------------------
+INSTAGRAM_URL =
+LINKEDIN_URL =
+PRIVACY_POLICY_URL =
+  (Recommended before launch since the FAQ mentions the DPDP Act.)
+COMPANY_LEGAL_NAME =
+  (Shown in footer copyright. Blank = "Bildco".)
+
+
+9. SITE
+-------
+SITE_URL = https://bildco.in
+LOGO_FILE =
+  (Put logo in public/ and write its file name. Blank = text wordmark.)
+
+
+10. PLEASE CONFIRM (written on the site as policy, edit if wrong)
+-----------------------------------------------------------------
+These FAQ answers are statements about how Bildco works. Reply
+"OK" or give the correct version for each:
+
+FAQ_HANDOFF = Agent transfers the call to your staff, or takes details and alerts your team on WhatsApp.
+FAQ_DATA    = Collect only what's needed, restricted access, never sold, deleted on request, follows DPDP Act 2023.
+FAQ_CANCEL  = No long-term lock-in, cancel anytime.
+FAQ_SETUP   = Live within 48 hours of the discovery call, once we have services/prices/timings.
+
+NOTE: after adding audio files to public/audio/, rebuild the site
+(pnpm build) so the play buttons appear.
