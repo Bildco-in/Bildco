@@ -4,7 +4,7 @@ import { Pause, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { LanguageSample } from "@/lib/languages";
 import { SoundWave } from "./sound-wave";
-import { cn } from "./ui";
+import { cn } from "@/lib/cn";
 
 type Sample = LanguageSample & { audioSrc: string | null };
 

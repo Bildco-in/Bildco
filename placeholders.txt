@@ -62,13 +62,15 @@ AUDIO_HINGLISH = hinglish.mp3
    conversation only, with no play button.)
 
 
-6. WEBSITE CHAT WIDGET
-----------------------
-CHAT_WIDGET_PROVIDER =
-  (e.g. your own bot, Botpress, Voiceflow, Tidio, Crisp...)
-CHAT_WIDGET_EMBED_CODE =
-  (Paste the <script> snippet or iframe URL they give you.
-   Blank = demo block shows call + WhatsApp only.)
+6. DEMO AGENT API KEYS (put these in .env.local, NOT in this file)
+----------------------------------------------------------------
+Copy .env.example to .env (or .env.local) and fill:
+  OPENROUTER_API_KEY  (openrouter.ai/keys)                  powers chat + voice replies
+  OPENROUTER_MODEL    optional, default anthropic/claude-opus-5.5
+  SARVAM_API_KEY      (dashboard.sarvam.ai)                 powers voice: speech-to-text + text-to-speech
+  SARVAM_TTS_SPEAKER  optional voice name, default "priya"
+On Vercel add the same as Environment Variables, then redeploy.
+Without keys the demo section shows the email "Request a demo" card.
 
 
 7. INDUSTRY STATISTICS (optional)

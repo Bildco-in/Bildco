@@ -1,4 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
+import { agentEnabled } from "@/lib/agent/config";
+import { cn } from "@/lib/cn";
 import {
   consultationHref,
   consultationIsExternal,
@@ -9,10 +11,6 @@ import {
   site,
   whatsappHref,
 } from "@/lib/site";
-
-export function cn(...classes: Array<string | false | null | undefined>) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export function Container({ className, ...props }: ComponentProps<"div">) {
   return <div className={cn("mx-auto w-full max-w-6xl px-4 sm:px-6", className)} {...props} />;
@@ -103,9 +101,11 @@ export function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 /**
- * "Talk to our AI now" target: demo call line, then WhatsApp, then email.
+ * "Talk to our AI now" target: in-page demo agent, then demo call line, then
+ * WhatsApp, then email.
  */
-export function talkToAiTarget(): { href: string; external: boolean; kind: "call" | "whatsapp" | "email" } {
+export function talkToAiTarget(): { href: string; external: boolean; kind: "demo" | "call" | "whatsapp" | "email" } {
+  if (agentEnabled()) return { href: "#demo", external: false, kind: "demo" };
   if (hasDemoCall) return { href: telHref(site.demoCallNumber), external: false, kind: "call" };
   if (hasWhatsapp) return { href: whatsappHref(), external: true, kind: "whatsapp" };
   return {
@@ -114,5 +114,7 @@ export function talkToAiTarget(): { href: string; external: boolean; kind: "call
     kind: "email",
   };
 }
+
+export { cn };
 
 export const consultation = { href: consultationHref, external: consultationIsExternal };

@@ -1,4 +1,4 @@
-import { cn } from "./ui";
+import { cn } from "@/lib/cn";
 
 // Deterministic bar heights so server and client render the same markup.
 const BARS = [28, 46, 64, 38, 82, 56, 96, 70, 44, 88, 60, 100, 72, 50, 90, 66, 40, 78, 54, 34, 62, 86, 48, 30];

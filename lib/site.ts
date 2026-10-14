@@ -22,9 +22,6 @@ export const site = {
   foundingSpotsTotal: 20,
   foundingSpotsRemaining: null as number | null,
 
-  // iframe URL for the website chat widget demo, or "" to hide it.
-  chatWidgetEmbedUrl: "",
-
   instagramUrl: "",
   linkedinUrl: "",
   privacyPolicyUrl: "",
