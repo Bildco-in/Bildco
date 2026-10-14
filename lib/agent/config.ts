@@ -2,11 +2,9 @@
 // sent to the browser.
 
 export const agentConfig = {
-  // Any OpenRouter model id, e.g. "anthropic/claude-haiku-5.5" for lower cost.
-  model: process.env.OPENROUTER_MODEL || "anthropic/claude-opus-5.5",
   // Low effort keeps replies fast enough for a live voice conversation.
   effort: "low" as const,
-  maxTokens: { chat: 2000, voice: 1200 },
+  maxTokens: { chat: 1500, voice: 1000 },
 
   stt: { model: "saaras:v4" },
   tts: {
@@ -25,8 +23,26 @@ export const agentConfig = {
   },
 };
 
+type Provider = { name: "sarvam" | "openrouter"; key: string; model: string };
+
+/**
+ * Which LLM writes the replies. LLM_PROVIDER picks it; otherwise Sarvam is
+ * used when its key is set, else OpenRouter.
+ */
+export function llmProvider(): Provider {
+  const sarvamKey = process.env.SARVAM_API_KEY ?? "";
+  const openrouterKey = process.env.OPENROUTER_API_KEY ?? "";
+  const choice = process.env.LLM_PROVIDER || (sarvamKey ? "sarvam" : "openrouter");
+
+  if (choice === "sarvam") {
+    return { name: "sarvam", key: sarvamKey, model: process.env.SARVAM_LLM_MODEL || "sarvam-105b" };
+  }
+  // Any OpenRouter model id, or a comma-separated list to fall back through.
+  return { name: "openrouter", key: openrouterKey, model: process.env.OPENROUTER_MODEL || "anthropic/claude-haiku-5.5" };
+}
+
 export function agentEnabled() {
-  return Boolean(process.env.OPENROUTER_API_KEY);
+  return Boolean(llmProvider().key);
 }
 
 export function voiceEnabled() {
